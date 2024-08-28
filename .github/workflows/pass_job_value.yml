@@ -35,11 +35,13 @@ jobs:
             echo "The selected color is $COLOREK"
             echo "message='The selected color is $COLOREK'" >>> $GITHUB_OUTPUT
   consumer:
+    needs: producer
     runs-on: ubuntu-latest
     steps:
       - name: Print the message
         run: |
           echo $message
+          echo {{ steps.producer.outputs.sentence_maker.message }}
 
   job_1:
     name: Add 3 and 7
