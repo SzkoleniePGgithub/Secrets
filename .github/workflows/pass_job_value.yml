@@ -19,7 +19,8 @@ jobs:
         id: color-selector
         run: |
           COLOR=blue
-          echo "COLOR=$COLOR" >> $GITHUB_OUTPUT
+          echo "COLOR=blue" >> "$GITHUB_OUTPUT"
+          echo "The selected color is $COLOR"
       - name: Get color
         run: |
           echo "The selected color is $COLOR"
