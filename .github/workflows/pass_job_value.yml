@@ -18,8 +18,7 @@ jobs:
       - name: Set color
         id: color-selector
         run: |
-          $COLOR="blue"
-          
+          $COLOR=blue
       - name: Get color
         run: echo "The selected color is $COLOR"
  
