@@ -24,8 +24,9 @@ jobs:
       - name: Get color
         run: |
           echo "The selected color is $COLOR"
-          echo {{ steps.color-selector.outputs.COLOR }}
-        
+          echo "The selected color is {{ steps.color-selector.COLOR }}"
+          echo {{ steps.color-selector.COLOR }}
+#{{ steps.NAZWA_STEPA.outputs.NAZWA_ZMIENNEJ_W_STEPIE }} 
   producer:
     runs-on: ubuntu-latest
     needs: pass_in_one_job
