@@ -34,10 +34,9 @@ jobs:
         echo "Powinna być zmienna w scopie workflow:$WORKFLOW_VAR" 
         echo "Powinna być zmienna w scopie joba:$JOB_VAR" 
         echo "NIE powinna być zmienna w scopie stepu:$STEP_VAR" 
-      env:
-        JOB_VAR: "bbbb"
     env:
       JOB_VAR: "bbbb"
+      STEP_VAR: "no nie"
  
   display-variables2: 
     runs-on: ubuntu-latest 
