@@ -1,48 +1,52 @@
-on: 
-  push: 
-    branches: 
+on:
+  push:
+    branches:
       - main
   workflow_dispatch:
-env: 
+env:
   cat_name: "Puszek"
   ORGANIZATION_VAR: ${{ vars.ORGANIZATION_VAR}}
   REPOSITORY_VAR: ${{ vars.REPOSITORY_VAR}}
   ENVIRONMENT_VAR: ${{ vars.ENVIRONMENT_VAR}}
   WORKFLOW_VAR: "aaaa"
- 
-jobs: 
-  display-variables: 
+
+jobs:
+  display-variables:
     name: "${{ vars.ENVIRONMENT_VAR }}"
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     environment: test
-    steps: 
-    - name: Use variables 1 
-      run: | 
-        echo "Repository variable : $REPOSITORY_VAR" 
-        echo "Organization variable : $ORGANIZATION_VAR" 
-        echo "Environment variable : $ENVIRONMENT_VAR" 
-        echo "Ala ma kota o nazwie $cat_name" 
-        echo "Powinna być zmienna w scopie workflow:$WORKFLOW_VAR" 
-        echo "Powinna być zmienna w scopie joba:$JOB_VAR" 
-        echo "Powinna być zmienna w scopie stepu:$STEP_VAR" 
-      env:
-        STEP_VAR: "cccc"
-     
-    - name: Use variables 1 
-      run: | 
-        echo "Ala ma kota o nazwie $cat_name" 
-        echo "Powinna być zmienna w scopie workflow:$WORKFLOW_VAR" 
-        echo "Powinna być zmienna w scopie joba:$JOB_VAR" 
-        echo "NIE powinna być zmienna w scopie stepu:$STEP_VAR" 
+    steps:
+      - name: Use variables 1
+        run: |
+          echo "Repository variable : $REPOSITORY_VAR" 
+          echo "Organization variable : $ORGANIZATION_VAR" 
+          echo "Environment variable : $ENVIRONMENT_VAR" 
+          echo "Ala ma kota o nazwie $cat_name" 
+          echo "Powinna być zmienna w scopie workflow:$WORKFLOW_VAR" 
+          echo "Powinna być zmienna w scopie joba:$JOB_VAR" 
+          echo "Powinna być zmienna w scopie stepu:$STEP_VAR"
+        env:
+          STEP_VAR: "cccc"
+
+      - name: Use variables 1
+        run: |
+          echo "Ala ma kota o nazwie $cat_name" 
+          echo "Powinna być zmienna w scopie workflow:$WORKFLOW_VAR" 
+          echo "Powinna być zmienna w scopie joba:$JOB_VAR" 
+          echo "NIE powinna być zmienna w scopie stepu:$STEP_VAR"
     env:
       JOB_VAR: "bbbb"
       STEP_VAR: "no nie"
- 
-  display-variables2: 
-    runs-on: ubuntu-latest 
-    steps: 
-    - name: Use variables in display-variables2 
-      run: | 
-        echo "Powinna być zmienna w scopie workflow:$WORKFLOW_VAR" 
-        echo "NIE powinna być zmienna w scopie joba:$JOB_VAR" 
-        echo "NIE powinna być zmienna w scopie stepu:$STEP_VAR" 
+
+  display-variables2:
+    runs-on: ubuntu-latest
+    env:
+      STEP_VAR: "no nie"
+    steps:
+      - name: Use variables in display-variables2
+        env:
+          JOB_VAR: "bbbb"
+        run: |
+          echo "Powinna być zmienna w scopie workflow:$WORKFLOW_VAR" 
+          echo "NIE powinna być zmienna w scopie joba:$JOB_VAR" 
+          echo "NIE powinna być zmienna w scopie stepu:$STEP_VAR"
