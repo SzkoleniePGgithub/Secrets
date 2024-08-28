@@ -5,9 +5,9 @@ on:
   workflow_dispatch:
 env: 
   cat_name: "Puszek"
-  ORGANIZATION_VAR: "${{ env.ORGANIZATION_VAR}}"
-  REPOSITORY_VAR: "${{ env.REPOSITORY_VAR}}"
-  ENVIRONMENT_VAR: "${{ env.ENVIRONMENT_VAR}}"
+  ORGANIZATION_VAR: ${{ env.ORGANIZATION_VAR}}
+  REPOSITORY_VAR: ${{ env.REPOSITORY_VAR}}
+  ENVIRONMENT_VAR: ${{ env.ENVIRONMENT_VAR}}
  
 jobs: 
   display-variables: 
