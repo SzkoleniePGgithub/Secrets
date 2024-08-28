@@ -30,7 +30,7 @@ jobs:
       - name: Make a sentence
         id: sentence_maker
         env:
-          COLOREK: ${{ steps.pass_in_one_job.outputs.color-selector.COLOR }}
+          COLOREK: ${{ steps.pass_in_one_job.color-selector.COLOR }}
         run: |
             echo "The selected color is $COLOREK"
             echo "message='The selected color is $COLOREK'" >>> $GITHUB_OUTPUT
@@ -44,6 +44,7 @@ jobs:
           echo {{ steps.producer.outputs.sentence_maker.message }}
 
   job_1:
+    needs: consumer
     name: Add 3 and 7
     runs-on: ubuntu-latest
     steps:
